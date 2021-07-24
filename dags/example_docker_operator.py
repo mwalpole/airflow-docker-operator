@@ -11,7 +11,6 @@ default_args = {
 'email_on_failure'      : False,
 'email_on_retry'        : False,
 'retries'               : 0,
-# 'retry_delay'           : timedelta(minutes=5)
 }
 
 with DAG('docker_operator_dag', default_args=default_args, schedule_interval="5 * * * *", catchup=False) as dag:
@@ -26,14 +25,12 @@ with DAG('docker_operator_dag', default_args=default_args, schedule_interval="5 
     t1 = DockerOperator(
         task_id='docker_command_sleep',
         image='centos:latest',
-        # container_name='task___command_sleep',
         api_version='auto',
         auto_remove=True,
         command="/bin/sleep 30",
         docker_url='tcp://docker-proxy:2375',
-        # docker_url="unix://var/run/docker.sock",
         network_mode="bridge",
-        mount_tmp_dir=False
+        mount_tmp_dir=False # added in docker provider 2.1.0rc1
         )
 
 start_dag >> t1 >> end_dag
