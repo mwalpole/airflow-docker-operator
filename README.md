@@ -14,3 +14,9 @@
     apache/airflow:2.1.2webserver
 ```
 5. For production we will build our own image explicitly rather than installing the providers anew every time we restart airflow
+6. To run the example begin by initializing the airflow database
+```docker compose up airflow-init```
+7. Then run the full compose file
+```docker compose up -d```
+8. To tidy up run
+```docker compose down --rmi all --volumes```
