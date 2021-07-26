@@ -12,7 +12,7 @@
 4. This is comparable to the following command which will install the providers on top of an existing airflow image
 ```
 docker run -it -p 8080:8080 \
-  --env "_PIP_ADDITIONAL_REQUIREMENTS=apache-airflow-providers-docker==1.1.0" \
+  --env "_PIP_ADDITIONAL_REQUIREMENTS=apache-airflow-providers-docker==2.1.0rc1" \
   --env "_AIRFLOW_DB_UPGRADE=true" \
   --env "_AIRFLOW_WWW_USER_CREATE=true" \
   --env "_AIRFLOW_WWW_USER_PASSWORD_CMD=echo admin" \
